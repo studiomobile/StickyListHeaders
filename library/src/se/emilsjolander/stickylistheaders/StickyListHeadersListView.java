@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -767,8 +767,22 @@ public class StickyListHeadersListView extends FrameLayout {
         }
     }
 
+    private OnItemClickListener onItemClickListener;
+
+    public interface OnItemClickListener  {
+        void onItemClick(android.widget.AdapterView<?> adapterView, android.view.View view, int position, long id);
+    }
+
     public void setOnItemClickListener(OnItemClickListener listener) {
-        mList.setOnItemClickListener(listener);
+        this.onItemClickListener = listener;
+        mList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(android.widget.AdapterView<?> adapterView, android.view.View view, int position, long id)
+            {
+                StickyListHeadersListView.this.onItemClickListener.onItemClick(adapterView, view, position, id);
+            }
+        });
     }
 
     public void setOnItemLongClickListener(OnItemLongClickListener listener) {
