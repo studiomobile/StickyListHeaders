@@ -48,6 +48,10 @@ File -> Import Project ...
 ```
 In the following dialog navigate to StickyListHeaders which you cloned to your computer in the previous steps and select the `build.gradle`.
 
+###Xamarin
+
+For usage with Xamarin.Android checkout "xamarin bindings" branch. There is StickyListHeaderBindings project. You should first generate .aar file. (In Android Studio "make module library") and then build .dll from Xamarin Studio.
+
 Getting Started
 ---------------
 ###Base usage
@@ -285,9 +289,3 @@ Get the amount of overlap the sticky header has when position in on the top of t
 ```java
 public int getHeaderOverlap(int position);
 ```
-
-Contributing
-------------
-Contributions are very welcome. Now that this library has grown in popularity i have a hard time keeping upp with all the issues while tending to a multitude of other projects as well as school. So if you find a bug in the library or want a feature and think you can fix it yourself, fork + pull request and i will greatly appreciate it!
-
-I love getting pull requests for new features as well as bugs. However, when it comes to new features please also explain the use case and way you think the library should include it. If you don't want to start coding a feature without knowing if the feature will have chance of being included, open an issue and we can discuss the feature!
